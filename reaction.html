@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container-01">
+    <div class="container">
         <h2>Bindusree Penamalli reaction timer</h2>
         <p id="target">"Your time"</p>
         <p id="countdown">"Count"</p>
@@ -22,6 +22,24 @@
             myTime = Date.now()
             console.log(myTime)
         }
+        function startTime() {
+            max=10
+            min=2
+            let countdown = Math.floor(Math.random() * (max- min +1))+min
+            for (let i = 0; i < countdown; i++) {
+                setTimeout(() => {
+                    document.getElementById("countdown").innerHTML = "count: "+ i
+                }, (countdown-1- i) * 1000)}
+                setTimeout(() => {
+                    if (myTime == undefined) {
+                        document.getElementById("target").innerHTML = "Too Slow"
+                    } else {
+                        let buttonTime = Date.now()
+                        document.getElementById("target").innerHTML = "Time was " + (buttonTime - myTime)
+                    }
+                }, 3000);
+
+            }
           </script>
 
 </body>
