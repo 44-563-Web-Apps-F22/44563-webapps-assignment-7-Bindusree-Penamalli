@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cycling Game</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			background-color: black;
+		}
+
+		.flex-container>div {
+			background-color: yellowgreen;
+			margin: 10px;
+			padding: 20px;
+			font-size: 30px;
+		}
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: blueviolet;
+			}
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<h2>Bindusree Penamalli builds a cycler</h2>
+	<div class="flex-container01" id="target">
+		<div class="cycle">row item 1</div>
+		<div class="cycle">row item 2</div>
+		<div class="cycle">row item 3</div>
+
+	</div>
+
+	<p class="message"> Press the button to create an new element and add it to container
+	</p>
+
+	<label for="inputElement">type one text: </label>
+	<input class="control" type="text" name="input" id="iElement" value="">
+	<div class="container text-center">
+		<button type="button" onclick="makeNewDiv()">Add value</button>
+		<button type="button" onclick="get()">Get</button>
+		<button type="button" onclick="spin()">Spin</button>
+		<button type="button" onclick="swap()">Swap</button>
+	</div>
+
+	<script>
+		function makeNewDiv() {
+			let element = document.createElement("div")
+			let value = document.getElementById("iElement").value
+			element.innerHTML = value
+			element.className = "cycle"
+			let container = document.getElementById("target")
+			container.appendChild(element)
+
+		}
+		function get() {
+			let cycleItems = document.getElementsByClassName("cycle")
+			if (cycleItems.length > 0) {
+				cycleItems[cyclerItems.length - 1].remove()
+			}
+		}
+		function spin() {
+			let cycleItems = document.getElementsByClassName("cycle")
+			if (cycleItems.length > 1) {
+				removedItem = cycleItems[cycleItems.length - 1]
+				cycleItems[cycleItems.length - 1].remove()
+				let container = document.getElementById("target")
+				container.insertBefore(removedItem, container.firstChild)
+
+			}
+		}
+		function swap() {
+			let cycleItems = document.getElementsByClassName("cycle")
+			let x = Math.floor(Math.random() * cycleItems.length)
+			let y = Math.floor(Math.random() * cycleItems.length)
+			 let intialText = document.getElementsByClassName("cycle")[x]
+			 let finalText = document.getElementsByClassName("cycle)[y]
+			if (cycleItems.length > 1) {
+				let dummy = intialText.innerHTML
+				intialText.innerHTML = finalText.innerHTML
+			 	finalText.innerHTML = dummy
+			}
+		
+		}
+	</script>
+</body>
+
+</html>
